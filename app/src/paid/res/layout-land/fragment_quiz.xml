@@ -1,0 +1,158 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/default_margin"
+    tools:context=".QuizActivity">
+
+    <TextView
+        android:id="@+id/tv_question_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/quiz_title"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/question_and_answers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/iv_back"
+        android:layout_alignParentTop="true"
+        android:elevation="@dimen/cardview_default_elevation"
+        card_view:cardCornerRadius="@dimen/cardview_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center_vertical"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:id="@+id/tv_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    tools:text="This is a question" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary" />
+
+            <LinearLayout
+                android:id="@+id/layout_singlechoice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/default_padding"
+                android:weightSum="4">
+
+                <RadioGroup
+                    android:id="@+id/rg_singlechoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="4">
+
+                    <RadioButton
+                        android:id="@+id/rb_choice1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        tools:text="Android" />
+
+                    <RadioButton
+                        android:id="@+id/rb_choice2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        tools:text="Android" />
+
+                    <RadioButton
+                        android:id="@+id/rb_choice3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        tools:text="Android" />
+
+                    <RadioButton
+                        android:id="@+id/rb_choice4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        tools:text="Android" />
+                </RadioGroup>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_toEndOf="@+id/iv_back"
+        android:layout_toLeftOf="@+id/iv_next"
+        android:layout_toRightOf="@+id/iv_back"
+        android:layout_toStartOf="@+id/iv_next"
+        android:gravity="center"
+        android:padding="@dimen/default_padding"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        tools:text="This is the answer"
+        tools:textColor="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/landscape_imageview_margin_top"
+        android:background="@drawable/circle_background"
+        android:contentDescription="@string/content_description_back"
+        android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+        android:text="@string/quiz_back"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/iv_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/landscape_imageview_margin_top"
+        android:background="@drawable/circle_background"
+        android:contentDescription="@string/content_description_next"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:text="@string/quiz_next"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tv_no_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/quiz_no_questions"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:visibility="gone" />
+
+</RelativeLayout>
