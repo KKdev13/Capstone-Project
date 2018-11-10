@@ -392,6 +392,12 @@ public class QuizFragment extends Fragment implements LoaderManager.LoaderCallba
             } else {
                 showAnswer();
             }
+        } else if (number < questionPool.getLength()){
+            updateUserInterface();
+            updateQuestion();
+            if(number < questionPool.getLength() && userSelection.containsKey(questionPool.getId(number))){
+                showAnswer();
+            }
         }
     }
     @OnClick(R.id.iv_back)
@@ -417,7 +423,7 @@ public class QuizFragment extends Fragment implements LoaderManager.LoaderCallba
     private int isInFavorites(int id){
         ContentResolver contentResolver = getActivity().getContentResolver();
         Cursor cursor = contentResolver.query(QuestionContract.URI_QUESTIONS, null,
-                QuestionContract.QuestionColumns._ID + " = ? AND" + QuestionContract.QuestionColumns.FAVORITE + " = 1",
+                QuestionContract.QuestionColumns._ID + " = ? AND " + QuestionContract.QuestionColumns.FAVORITE + " = 1",
                 new String[]{"" + id}, null);
         cursor.close();
         return cursor.getCount();

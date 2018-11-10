@@ -17,18 +17,18 @@ public class QuestionContentProvider extends ContentProvider{
     private static final UriMatcher uriMatcher;
 
     private static final int ALL_QUESTIONS = 1;
-    private static final int CORRECT_QUESTIONS = 2;
-    private static final int WRONG_QUESTIONS = 3;
-    private static final int FAVORITE_QUESTIONS = 4;
+    private static final int WRONG_QUESTIONS = 2;
+    private static final int FAVORITE_QUESTIONS = 3;
+    private static final int CORRECT_QUESTIONS = 4;
     private static final int QUESTIONS_ID = 5;
 
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH, ALL_QUESTIONS);
         uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH + "/correct",CORRECT_QUESTIONS);
-        uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH +"/wrong", WRONG_QUESTIONS);
-        uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH +"/favorite", FAVORITE_QUESTIONS);
-        uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH +"#", QUESTIONS_ID);
+        uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH + "/wrong", WRONG_QUESTIONS);
+        uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH + "/favorite", FAVORITE_QUESTIONS);
+        uriMatcher.addURI(AUTHORITY, QUESTIONS_PATH + "/#", QUESTIONS_ID);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class QuestionContentProvider extends ContentProvider{
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
 
-        cursor = db.query(QuestionColumns.TABLE, projection, selection, selectionArgs, null, null, sortOrder);
+        cursor = db.query(QuestionContract.QuestionColumns.TABLE, projection, selection, selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
